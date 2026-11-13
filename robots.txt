@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+# Adicione a linha Sitemap com a URL pública após confirmar o domínio.

@@ -1,0 +1,94 @@
+.preloader {
+    position: fixed;
+    z-index: 30;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    gap: 14px;
+    pointer-events: none;
+    background: #040608;
+    animation: leave .55s .15s both
+}
+
+.preload-line {
+    height: 2px;
+    background: var(--sky);
+    transform-origin: left;
+    animation: load .45s both
+}
+
+.marquee-track {
+    animation: marquee 36s linear infinite
+}
+
+.marquee:hover .marquee-track {
+    animation-play-state: paused
+}
+
+.mobile-menu[open] {
+    animation: menu-in .22s ease-out
+}
+
+@keyframes marquee {
+    to {
+        transform: translateX(-50%)
+    }
+}
+
+@keyframes leave {
+    70% {
+        opacity: 1
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden
+    }
+}
+
+@keyframes load {
+    from {
+        transform: scaleX(0)
+    }
+}
+
+@keyframes menu-in {
+    from {
+        opacity: 0;
+        transform: translateY(-14px)
+    }
+}
+
+@keyframes nudge {
+    50% {
+        transform: translateY(3px)
+    }
+}
+
+.scroll-link span {
+    animation: nudge 2.4s ease-in-out infinite
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important
+    }
+
+    .marquee {
+        overflow-x: auto
+    }
+
+    .marquee-set[aria-hidden] {
+        display: none
+    }
+
+    .preloader {
+        display: none !important
+    }
+}
